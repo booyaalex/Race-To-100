@@ -1,0 +1,80 @@
+/* Style.css */
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+*{text-align:center;marign:0;padding:0;}
+html {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom right,#1c1c1c,#3b4fb5);
+}
+a{
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0;
+  margin:5px;
+}
+.Intro{
+  margin: 40px 240px;
+  padding:10px;
+  border:white solid 2px;
+  border-radius:10px;
+  background: #b0b0b0;
+  color:white;
+  text-shadow:0px 1px black;
+  
+}
+.section{
+  margin: 30px 250px;
+  padding:10px;
+  border: 1px solid white;
+  border-radius:10px;
+  background: #1c1c1c;
+  text-align:center;  
+  color:white;
+  text-shadow:1px 1px black;
+}
+.hosted{
+  color:white;
+  background:  linear-gradient(to bottom right,#3bb0ae,#3b4fb5);
+  border: 2px solid white;
+  border-radius:30px;
+  margin:10px 350px;
+  padding:5px;
+}
+.disabled{
+  color:#787878;
+  text-decoration:underline;
+  font-size:17px;
+  margin:5px;
+}
+fieldset{
+  border: solid whitesmoke 5px;
+  margin:10px;
+  padding:10px;
+}
+legend{
+  border-bottom:solid black 2px;
+  color:red;
+  text-shadow:-2px 2px white;
+  margin:2px;
+  border:whitesmoke solid 2px;
+  padding:2px;
+}
+.disabled:hover{
+  color:white;
+  text-shadow: 0 0 5px #3c3939, 0 0 10px #3c3939, 0 0 15px #3c3939, 0 0;
+  
+}
+a:hover{
+  text-shadow: 0 0 5px #7f4343, 0 0 10px #7f4343, 0 0 15px #7f4343, 0 0;
+  color:white;
+  cursor:pointer;
+}
+.Logo{
+  border:solid white 2px;
+  border-radius:50%;
+  width:100px;
+  height:100px;
+  float:left;
+  margin-left:40px;
+}
