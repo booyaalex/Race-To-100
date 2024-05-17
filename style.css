@@ -1,8 +1,11 @@
-/* Style.css */
+html {
+  height: -webkit-fill-available;
+}
 body {
   font-family: "Open Sans", sans-serif;
   background: linear-gradient(to bottom right, #1c1c1c, #3b4fb5);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 * {
@@ -72,18 +75,4 @@ a:hover {
   position: sticky;
   top: 0;
   margin-top: 55px;
-}
-
-fieldset {
-  border: solid whitesmoke 5px;
-  margin: 10px;
-  padding: 10px;
-}
-legend {
-  border-bottom: solid black 2px;
-  color: red;
-  text-shadow: -2px 2px white;
-  margin: 2px;
-  border: whitesmoke solid 2px;
-  padding: 2px;
 }
