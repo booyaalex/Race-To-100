@@ -76,3 +76,7 @@ a:hover {
   top: 0;
   margin-top: 55px;
 }
+.leaderboardEntree {
+  display:flex;
+  justify-content: space-between;
+}

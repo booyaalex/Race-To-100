@@ -223,6 +223,29 @@ const firebaseConfig = {
         hostSignUp: true
       });
   }
+
+  function makeLeaderboard() {
+    let textnode;
+    let H3
+    firebase
+      .database()
+      .ref("/")
+      .child("UserData")
+      .on("value", function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            const LEADERBOARD = document.getElementById("leaderboard");
+
+            const ROW = document.createElement("div");
+            ROW.classList.add("section");
+            ROW.classList.add("main");
+            ROW.classList.add("leaderboardEntree");
+
+            H3 = document.
+
+            LEADERBOARD.appendChild();
+        });
+      });
+  }
   
   function submitAnnouncements() {
     const date = new Date();
@@ -304,5 +327,5 @@ const firebaseConfig = {
     BOARD.appendChild(DATE_ADMIN);
     aBoard.appendChild(BOARD);
   }
-  updateAnnouncements();
+  
   
