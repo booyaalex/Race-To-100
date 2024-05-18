@@ -355,5 +355,3 @@ const firebaseConfig = {
     BOARD.appendChild(DATE_ADMIN);
     aBoard.appendChild(BOARD);
   }
-  updateAnnouncements();
-  
