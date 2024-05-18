@@ -226,8 +226,7 @@ const firebaseConfig = {
   }
   
   function makeLeaderboard() {
-    document.getElementById("leaderboard").innerHTML =
-      '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
+    document.getElementById("leaderboard").innerHTML = '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
     let textnode;
     let P;
     firebase
@@ -345,5 +344,4 @@ const firebaseConfig = {
     aBoard.appendChild(BOARD);
   }
   
-  makeLeaderboard();
-  updateAnnouncements();
+  
