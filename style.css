@@ -1,17 +1,22 @@
-html {
-  height: -webkit-fill-available;
-}
 body {
   font-family: "Open Sans", sans-serif;
-  background: linear-gradient(to bottom right, #1c1c1c, #3b4fb5);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 * {
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(to bottom right, #1c1c1c, #3b4fb5);
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 .Logo {
