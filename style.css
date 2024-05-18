@@ -28,7 +28,11 @@ body {
   width: 100px;
   height: 100px;
 }
-
+.navBar {
+  position: sticky;
+  top: 0;
+  margin-top: 55px;
+}
 a {
   margin: 5px;
   font-size: 18px;
@@ -71,17 +75,27 @@ a:hover {
   text-shadow: 1px 1px black;
   margin-bottom: 20px;
 }
+.table {
+  overflow: scroll;
+}
 .footer {
   background: linear-gradient(to bottom right, #3bb0ae, #3b4fb5);
   border-radius: 30px;
   padding: 5px;
 }
-.navBar {
-  position: sticky;
-  top: 0;
-  margin-top: 55px;
-}
 .leaderboardEntree {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.input {
+  margin: 5px;
+  height: 40px;
+}
+.input.text {
+  width: 30%;
+}
+.input.check {
+  width: 40px;
+  border-radius: 100%;
 }

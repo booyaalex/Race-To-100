@@ -3,7 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Zone - Home</title>
+  <title>Game Zone - Sign Ups</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
@@ -15,9 +15,7 @@
 <body>
   <div class="background"></div>
   <div class="mainContent">
-    <img
-      src="https://media.discordapp.net/attachments/1239265865631924256/1240402819895267328/GaMe_Zone.gif?ex=66471765&is=6645c5e5&hm=925770db38efb8c91340f9204b7729751b802a33d55d31d5e05b063e0fb82ec2&=&width=422&height=422"
-      alt="Game Zone Logo" class="Logo">
+    <img src="https://media.discordapp.net/attachments/1239265865631924256/1240402819895267328/GaMe_Zone.gif?ex=66471765&is=6645c5e5&hm=925770db38efb8c91340f9204b7729751b802a33d55d31d5e05b063e0fb82ec2&=&width=422&height=422" alt="Game Zone Logo" class="Logo">
 
     <div class="section intro navBar">
       <h1>Game Zone</h1>
@@ -26,55 +24,44 @@
       <a href="leaderboard">Leaderboard</a>
       <a class="disabled">SignUp</a>
       <a href="https://discord.com/channels/1216067353746604072/member-safety" target="blank">Members</a>
-      <a href="https://docs.google.com/document/d/14UO0g34GEO-2lihmJXqFdQSEciHbByOhSX5h4jFUQZE/edit"
-        target="blank">Rules</a>
+      <a href="https://docs.google.com/document/d/14UO0g34GEO-2lihmJXqFdQSEciHbByOhSX5h4jFUQZE/edit" target="blank">Rules</a>
     </div>
     <div class="section intro">
       <h2>Sign Ups</h2>
     </div>
     <div class="section main">
-      <input class="input text" type="text" placeholder="Discord Username">
-      <input class="input text" type="text" placeholder="Discord Username">
-      <table>
-        <tr>
-          <th>1AM</th>
-          <th>2AM</th>
-          <th>3AM</th>
-          <th>4AM</th>
-          <th>5AM</th>
-          <th>6AM</th>
-          <th>7AM</th>
-          <th>8AM</th>
-          <th>9AM</th>
-          <th>10AM</th>
-          <th>11AM</th>
-          <th>12PM</th>
-          <th>1PM</th>
-          <th>2PM</th>
-          <th>3PM</th>
-          <th>4PM</th>
-          <th>5PM</th>
-          <th>6PM</th>
-          <th>7PM</th>
-          <th>8PM</th>
-          <th>9PM</th>
-          <th>10PM</th>
-          <th>11PM</th>
-          <th>12AM</th>
-          <th>Can't Play This Day</th>
-        </tr>
-        <tr>
-          <th>
-            Mondays
-          </th>
-          <td>
-            <input id="mon_0" class="input check" type="checkbox">
-          </td>
-          <td>
-            <input id="mon_1" class="input check" type="checkbox">
-          </td>
-        </tr>
-      </table>
+      <h3>Fill out the information below to sign up for the event!</h3>
+    </div>
+    <div class="section main">
+      <input id="discordUsernameInput" class="input text" type="text" placeholder="Discord Username">
+      <input id="blooketUsernameInput" class="input text" type="text" placeholder="Blooket Username">
+      <br>
+      <input id="timezoneInput" class="input text" type="text" placeholder="Timezone">
+    </div>
+    <div class="section main table">
+      <table id="timeTable"></table>
+    </div>
+    <div class="section main">
+      <h3>To participate in the tournament, you are required to make a blooket set with at least 10 questions. Your set may be used during the event!</h3>
+      <br>
+      <input id="setInput" class="input text" type="text" placeholder="Link to Your Set">
+    </div>
+    <div class="section main">
+      <div class="section main leaderboardEntree">
+        <input id="hostSignUp" class="input check" type="checkbox">
+        <label for="hostSignUp">I’m interested in helping host or staff other events or tournaments.</label>
+      </div>
+      <div class="section main leaderboardEntree">
+        <input id="rulesCheck" class="input check" type="checkbox">
+        <label for="rulesCheck">I have read and agree to follow the rules.</label>
+      </div>
+      <div class="section main leaderboardEntree">
+        <input id="discordCheck" class="input check" type="checkbox">
+        <label for="discordCheck">I have joined the <span id="discordLinkCheck">Discord</span>.</label>
+      </div>
+    </div>
+    <div class="section main table">
+      <button id="signUpSubmit" class="input text" onclick="submitUserData()">Submit</button>
     </div>
     <br>
     <div class="section footer">
@@ -82,6 +69,9 @@
       </p>
     </div>
   </div>
+
+  <script src="Scripts/firebase.js" type="text/javascript"></script>
+  <script src="Scripts/lazyTable.js" type="text/javascript"></script>
 </body>
 
 </html>
