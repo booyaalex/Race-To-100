@@ -223,29 +223,43 @@ const firebaseConfig = {
         hostSignUp: true
       });
   }
-
+  
   function makeLeaderboard() {
     let textnode;
-    let H3
+    let P;
     firebase
       .database()
       .ref("/")
       .child("UserData")
       .on("value", function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
-            const LEADERBOARD = document.getElementById("leaderboard");
-
-            const ROW = document.createElement("div");
-            ROW.classList.add("section");
-            ROW.classList.add("main");
-            ROW.classList.add("leaderboardEntree");
-
-            H3 = document.
-
-            LEADERBOARD.appendChild();
+          const LEADERBOARD = document.getElementById("leaderboard");
+  
+          const ROW = document.createElement("div");
+          ROW.classList.add("section");
+          ROW.classList.add("main");
+          ROW.classList.add("leaderboardEntree");
+  
+          P = document.createElement("p");
+          textnode = document.createTextNode(childSnapshot.val().discordUsername);
+          P.appendChild(textnode);
+          ROW.appendChild(P);
+  
+          P = document.createElement("p");
+          textnode = document.createTextNode(childSnapshot.val().blooketUsername);
+          P.appendChild(textnode);
+          ROW.appendChild(P);
+  
+          P = document.createElement("p");
+          textnode = document.createTextNode(childSnapshot.val().hostSignUp);
+          P.appendChild(textnode);
+          ROW.appendChild(P);
+  
+          LEADERBOARD.appendChild(ROW);
         });
       });
   }
+  
   
   function submitAnnouncements() {
     const date = new Date();
@@ -328,4 +342,5 @@ const firebaseConfig = {
     aBoard.appendChild(BOARD);
   }
   
-  
+  makeLeaderboard();
+  updateAnnouncements();
