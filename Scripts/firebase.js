@@ -226,7 +226,8 @@ const firebaseConfig = {
   }
   
   function makeLeaderboard() {
-    document.getElementById("leaderboard").innerHTML = '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
+    document.getElementById("leaderboard").innerHTML =
+      '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
     let textnode;
     let P;
     firebase
@@ -262,7 +263,6 @@ const firebaseConfig = {
       });
   }
   
-  
   function submitAnnouncements() {
     const date = new Date();
   
@@ -282,14 +282,17 @@ const firebaseConfig = {
         date: DMY,
         time: time,
         text:
-          "Hey everyone! If you see this, just testing a feature to add announcements to the website remotely!",
-        title: "Epic Test!",
+          "Morning Everyone! I'll be making sure the most recent announcements are going up to the top, rather than the bottom.",
+        title: "Order Testing!",
         admin: "Leo"
       });
   }
   
   function updateAnnouncements() {
-    const announcementList = new Map();
+    document.getElementById("announcementsBoard").innerHTML = "";
+    const announcementMap = new Map();
+    let announcementList = [];
+    let a = 0;
     firebase
       .database()
       .ref("/")
@@ -297,13 +300,22 @@ const firebaseConfig = {
       .on("value", function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           console.log(childSnapshot.val().date);
-          createBoard(
-            childSnapshot.val().title,
-            childSnapshot.val().admin,
-            childSnapshot.val().date,
-            childSnapshot.val().text
-          );
+          announcementList[a] = childSnapshot.val().time;
+          announcementMap.set(announcementList[a], {
+            title: childSnapshot.val().title,
+            admin: childSnapshot.val().admin,
+            date: childSnapshot.val().date,
+            text: childSnapshot.val().text
+          });
+          a++;
         });
+        const LENGTH = announcementList.length;
+        for (let i = LENGTH - 1; i > -1; i--) {
+          console.log("test");
+          console.log(i);
+          const MAP = announcementMap.get(announcementList[i]);
+          createBoard(MAP.title, MAP.admin, MAP.date, MAP.text);
+        }
       });
   }
   
@@ -343,5 +355,5 @@ const firebaseConfig = {
     BOARD.appendChild(DATE_ADMIN);
     aBoard.appendChild(BOARD);
   }
-  
+  updateAnnouncements();
   
