@@ -256,6 +256,8 @@ function makeLeaderboard() {
     .ref("/")
     .child("UserData")
     .on("value", function (snapshot) {
+      document.getElementById("leaderboard").innerHTML =
+    '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
       snapshot.forEach(function (childSnapshot) {
         const LEADERBOARD = document.getElementById("leaderboard");
 
