@@ -19,6 +19,7 @@ const firebaseConfig = {
       .update({
         discordUsername: "Leo",
         blooketUsername: ".Leonidas",
+        points: 101,
         timeAvailability: [
           {
             mondays: [
@@ -225,6 +226,8 @@ const firebaseConfig = {
   }
   
   function makeLeaderboard() {
+    document.getElementById("leaderboard").innerHTML =
+      '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
     let textnode;
     let P;
     firebase
@@ -251,7 +254,7 @@ const firebaseConfig = {
           ROW.appendChild(P);
   
           P = document.createElement("p");
-          textnode = document.createTextNode(childSnapshot.val().hostSignUp);
+          textnode = document.createTextNode(childSnapshot.val().points);
           P.appendChild(textnode);
           ROW.appendChild(P);
   
@@ -259,7 +262,7 @@ const firebaseConfig = {
         });
       });
   }
-  
+  makeLeaderboard();
   
   function submitAnnouncements() {
     const date = new Date();
@@ -342,5 +345,3 @@ const firebaseConfig = {
     aBoard.appendChild(BOARD);
   }
   
-  makeLeaderboard();
-  updateAnnouncements();
