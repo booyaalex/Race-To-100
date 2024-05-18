@@ -262,7 +262,7 @@ const firebaseConfig = {
         });
       });
   }
-  makeLeaderboard();
+  
   
   function submitAnnouncements() {
     const date = new Date();
@@ -345,3 +345,5 @@ const firebaseConfig = {
     aBoard.appendChild(BOARD);
   }
   
+  makeLeaderboard();
+  updateAnnouncements();
