@@ -338,6 +338,7 @@ function updateAnnouncements() {
         console.log("test");
         console.log(i);
         const MAP = announcementMap.get(announcementList[i]);
+        document.getElementById("announcementsBoard").innerHTML = "";
         createBoard(MAP.title, MAP.admin, MAP.date, MAP.text);
       }
     });
