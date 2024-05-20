@@ -334,11 +334,11 @@ function updateAnnouncements() {
         a++;
       });
       const LENGTH = announcementList.length;
+      document.getElementById("announcementsBoard").innerHTML = "";
       for (let i = LENGTH - 1; i > -1; i--) {
         console.log("test");
         console.log(i);
         const MAP = announcementMap.get(announcementList[i]);
-        document.getElementById("announcementsBoard").innerHTML = "";
         createBoard(MAP.title, MAP.admin, MAP.date, MAP.text);
       }
     });
