@@ -321,6 +321,7 @@ function updateAnnouncements() {
     .ref("/")
     .child("Announcements")
     .on("value", function (snapshot) {
+      document.getElementById("announcementsBoard").innerHTML = "";
       snapshot.forEach(function (childSnapshot) {
         console.log(childSnapshot.val().date);
         announcementList[a] = childSnapshot.val().time;
