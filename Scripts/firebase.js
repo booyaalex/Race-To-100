@@ -333,6 +333,13 @@ function updateAnnouncements() {
         });
         a++;
       });
+      console.log(announcementList);
+      function removeDuplicates(arr) {
+        return arr.filter((item,
+        index) => arr.indexOf(item) === index);
+      }
+      announcementList = removeDuplicates(announcementList);
+      console.log(announcementList);
       const LENGTH = announcementList.length;
       document.getElementById("announcementsBoard").innerHTML = "";
       for (let i = LENGTH - 1; i > -1; i--) {
