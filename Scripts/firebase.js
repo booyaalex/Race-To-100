@@ -251,39 +251,64 @@ function makeLeaderboard() {
     '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
   let textnode;
   let P;
+
+  let pointsList = [];
+  const pointsMap = new Map();
+
   firebase
     .database()
     .ref("/")
     .child("UserData")
     .on("value", function (snapshot) {
       document.getElementById("leaderboard").innerHTML =
-    '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
+        '<div class="section main leaderboardEntree"><h3>Discord</h3><h3>Blooket</h3><h3>Points</h3></div>';
+      let a = 0;
       snapshot.forEach(function (childSnapshot) {
-        const LEADERBOARD = document.getElementById("leaderboard");
-
-        const ROW = document.createElement("div");
-        ROW.classList.add("section");
-        ROW.classList.add("main");
-        ROW.classList.add("leaderboardEntree");
-
-        P = document.createElement("p");
-        textnode = document.createTextNode(childSnapshot.val().discordUsername);
-        P.appendChild(textnode);
-        ROW.appendChild(P);
-
-        P = document.createElement("p");
-        textnode = document.createTextNode(childSnapshot.val().blooketUsername);
-        P.appendChild(textnode);
-        ROW.appendChild(P);
-
-        P = document.createElement("p");
-        textnode = document.createTextNode(childSnapshot.val().points);
-        P.appendChild(textnode);
-        ROW.appendChild(P);
-
-        LEADERBOARD.appendChild(ROW);
+        pointsList[a] = childSnapshot.val().points + a * 0.001;
+        pointsMap.set(pointsList[a], {
+          discord: childSnapshot.val().discordUsername,
+          blooket: childSnapshot.val().blooketUsername,
+          points: childSnapshot.val().points
+        });
+        console.log(pointsMap.get(pointsList[a]));
+        console.log(pointsList[a]);
+        a++;
       });
+      pointsList.sort(function (a, b) {
+        return b - a;
+      });
+      console.log(pointsList);
+      for (let i = 0; i < pointsList.length; i++) {
+        const MAP = pointsMap.get(pointsList[i]);
+        console.log(MAP.points);
+        makeLeaderboardRow(MAP.discord, MAP.blooket, MAP.points);
+      }
     });
+}
+
+function makeLeaderboardRow(discord, blooket, points) {
+  const LEADERBOARD = document.getElementById("leaderboard");
+  const ROW = document.createElement("div");
+  ROW.classList.add("section");
+  ROW.classList.add("main");
+  ROW.classList.add("leaderboardEntree");
+
+  P = document.createElement("p");
+  textnode = document.createTextNode(discord);
+  P.appendChild(textnode);
+  ROW.appendChild(P);
+
+  P = document.createElement("p");
+  textnode = document.createTextNode(blooket);
+  P.appendChild(textnode);
+  ROW.appendChild(P);
+
+  P = document.createElement("p");
+  textnode = document.createTextNode(points);
+  P.appendChild(textnode);
+  ROW.appendChild(P);
+
+  LEADERBOARD.appendChild(ROW);
 }
 
 function submitAnnouncements() {
@@ -335,8 +360,7 @@ function updateAnnouncements() {
       });
       console.log(announcementList);
       function removeDuplicates(arr) {
-        return arr.filter((item,
-        index) => arr.indexOf(item) === index);
+        return arr.filter((item, index) => arr.indexOf(item) === index);
       }
       announcementList = removeDuplicates(announcementList);
       console.log(announcementList);
@@ -387,3 +411,4 @@ function createBoard(title, admin, date, text) {
   BOARD.appendChild(DATE_ADMIN);
   aBoard.appendChild(BOARD);
 }
+makeLeaderboard();
