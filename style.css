@@ -37,6 +37,7 @@ a {
   margin: 5px;
   font-size: 18px;
   color: #0000ff;
+  cursor: pointer;
 }
 a:hover {
   text-shadow: 0 0 5px #7f4343, 0 0 10px #7f4343, 0 0 15px #7f4343, 0 0;
@@ -98,4 +99,7 @@ a:hover {
 .input.check {
   width: 40px;
   border-radius: 100%;
+}
+.fire {
+  background-image: url("https://media1.giphy.com/media/RkhMKpIYLT9sukfuXg/giphy.gif?cid=ecf05e47tq5e2w0f5u5tyllpmx2chxc4g2iwvz9sr5epshav&ep=v1_gifs_related&rid=giphy.gif&ct=g");
 }

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Zone - Rounds</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="background"></div>
+  <div class="mainContent">
+    <img src="https://media.discordapp.net/attachments/1239265865631924256/1240402819895267328/GaMe_Zone.gif?ex=66471765&is=6645c5e5&hm=925770db38efb8c91340f9204b7729751b802a33d55d31d5e05b063e0fb82ec2&=&width=422&height=422" alt="Game Zone Logo" class="Logo">
+
+    <div id="navBar" class="section intro navBar">
+      <h1>Game Zone</h1>
+      <a href="index">Home</a>
+      <a href="announcements">Annoucements</a>
+      <a href="leaderboard">Leaderboard</a>
+      <a class="disabled">Rounds</a>
+      <a href="signup">SignUp</a>
+      <a href="rules">Rules</a>
+    </div>
+    <div class="section intro">
+      <h2>Rounds</h2>
+    </div>
+    <div class="section main">
+      <a onclick="scrolling()">Q1</a>
+      <a onclick="scrolling()">R1</a>
+      <a onclick="scrolling()">R2</a>
+      <a onclick="scrolling()">C1</a>
+      <a onclick="scrolling()">R3</a>
+      <a onclick="scrolling()">R4</a>
+      <a onclick="scrolling()">C2</a>
+      <a onclick="scrolling()">R5</a>
+      <a onclick="scrolling()">R6</a>
+      <a onclick="scrolling()">C3</a>
+      <a onclick="scrolling()">R7</a>
+      <a onclick="scrolling()">R8</a>
+      <a onclick="scrolling()">R9</a>
+      <a onclick="scrolling()">C4</a>
+      <a onclick="scrolling()">R10</a>
+    </div>
+    <div id="Q1" class="section main">
+      <div class="section intro">
+        <h3> Q1: Set Off! </h3>
+      </div>
+      <div class="section main">
+        <p> Create your own set that may be used in the event! </p>
+        <br>
+        <p> Time: NA</p>
+        <br>
+        <p> Date: May 27 - May 31 </p>
+      </div>
+      <div class="section main">
+        <p>Set: NA</p>
+      </div>
+    </div>
+    <div id="R1" class="section main">
+      <div class="section intro">
+        <h3> R1: Gold Quest! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Gold Quest! </p>
+        <br>
+        <p> Time: 10 Min</p>
+        <br>
+        <p> Date: June 2 - June 7 </p>
+      </div>
+      <div class="section main">
+        <p>
+          Set: <a href="https://dashboard.blooket.com/set/63e655e2c8ff69333c271b82" class="textLink">Guess The Logo</a>: _Mystic_:)
+        </p>
+      </div>
+    </div>
+    <div id="R2" class="section main">
+      <div class="section intro">
+        <h3> R2: Cafe! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Cafe! </p>
+        <br>
+        <p> Time: 12 Min</p>
+        <br>
+        <p> Date: June 10 - June 14 </p>
+      </div>
+      <div class="section main">
+        <p>
+          Set: <a href="https://dashboard.blooket.com/set/64cd1150ff6f69f3025fc07e" class="textLink">General Trivia</a>: Blooket
+        </p>
+      </div>
+    </div>
+    <div id="C1" class="section main">
+      <div class="section intro">
+        <h3> Cut 1: 25 Points </h3>
+      </div>
+    </div>
+    <div id="R3" class="section main">
+      <div class="section intro">
+        <h3> R3: Classic! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Classic! </p>
+        <br>
+        <p> Questions: 10</p>
+        <br>
+        <p> Date: June 24 - June 28 </p>
+      </div>
+      <div class="section main">
+        <p>
+          Set: <a href="https://dashboard.blooket.com/set/64cd1b99ff6f69f3025fc25a" class="textLink">Finish the Lyrics</a>: Blooket
+        </p>
+      </div>
+    </div>
+    <div id="R4" class="section main">
+      <div class="section intro">
+        <h3> R4: Crypto Hack! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Crypto Hack! </p>
+        <br>
+        <p> Time: 7 Min</p>
+        <br>
+        <p> Date: July 1 - July 5 </p>
+      </div>
+      <div class="section main">
+        <p>
+          Set: <a href="https://dashboard.blooket.com/set/5f88953cdb209e00046522c7" class="textLink">Guess the Food Quiz</a>: Kori
+        </p>
+      </div>
+    </div>
+    <div id="C2" class="section main">
+      <div class="section intro">
+        <h3> Cut 2: 50 Points </h3>
+      </div>
+    </div>
+    <div id="R5" class="section main">
+      <div class="section intro">
+        <h3> R5: Racing! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Racing! </p>
+        <br>
+        <p> Questions: 15</p>
+        <br>
+        <p> Date: July 8 - July 12 </p>
+      </div>
+      <div class="section main">
+        <p>
+          Set: NA
+        </p>
+      </div>
+    </div>
+    <div id="R6" class="section main">
+      <div class="section intro">
+        <h3> R6: Blook Rush! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Blook Rush! </p>
+        <br>
+        <p> Time: 7 Min </p>
+        <br>
+        <p> Date: July 15 - July 19 </p>
+      </div>
+      <div class="section main">
+        <p>
+          NA
+        </p>
+      </div>
+    </div>
+    <div id="C3" class="section main">
+      <div class="section intro">
+        <h3> Cut 3: 75 Points </h3>
+      </div>
+    </div>
+    <div id="R7" class="section main">
+      <div class="section intro">
+        <h3> R7: Tower Defense! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Tower Defense! </p>
+        <br>
+        <p> Time: 10 Min</p>
+        <br>
+        <p> Date: July 22 - July 26 </p>
+      </div>
+      <div class="section main">
+        <p>
+          NA
+        </p>
+      </div>
+    </div>
+    <div id="R8" class="section main">
+      <div class="section intro">
+        <h3> R8: Tower Defense 2! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Tower Defense 2! </p>
+        <br>
+        <p> Time: 10 Min</p>
+        <br>
+        <p> Date: July 29 - August 2 </p>
+      </div>
+      <div class="section main">
+        <p>
+          NA
+        </p>
+      </div>
+    </div>
+    <div id="R9" class="section main">
+      <div class="section intro">
+        <h3> R9: Pirate's Voyage! </h3>
+      </div>
+      <div class="section main">
+        <p> A game of Pirate's Voyage! </p>
+        <br>
+        <p> Time: 7 Min</p>
+        <br>
+        <p> Date: August 5 - August 9 </p>
+      </div>
+      <div class="section main">
+        <p>
+          NA
+        </p>
+      </div>
+    </div>
+    <div id="C4" class="section main">
+      <div class="section intro">
+        <h3> Cut 4: 100 Points </h3>
+      </div>
+    </div>
+    <div id="R10" class="section main fire">
+      <div class="section intro">
+        <h3> R10: Battle Royale! </h3>
+      </div>
+      <div class="section main">
+        <p> The final showdown, in a game of Battle Royale! </p>
+        <br>
+        <p> Energy: 5 </p>
+        <br>
+        <p> August 12 - August 16 </p>
+      </div>
+      <div class="section main">
+        <p>
+          NA
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="section footer">
+      <p>Hosted By: <a href="https://discord.gg/wU92uGTk?event=1237112913685381172">Legend Plays</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="Scripts/scrolling.js" type="text/javascript"></script>
+</body>
+
+</html>
