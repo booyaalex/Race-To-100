@@ -487,7 +487,22 @@ function makeCurrentRound() {
       makeBreak();
       makePara(`Date: ${DATE}`);
       makeBreak();
-      makePara(`Set: ${SET_TITLE}`);
+
+      const P = document.createElement("p");
+      textnode = document.createTextNode(`Set: `);
+      P.appendChild(textnode);
+
+      const A = document.createElement("a");
+      A.setAttribute("href", `${SET}`);
+      A.classList.add("textLink");
+      textnode = document.createTextNode(`${SET_TITLE}`);
+      A.appendChild(textnode);
+      P.appendChild(A);
+
+      textnode = document.createTextNode(`  -  ${SET_MAKER}`);
+      P.appendChild(textnode);
+
+      DIV2.appendChild(P);
 
       currentRoundBoard.appendChild(DIV2);
 
