@@ -494,6 +494,7 @@ function makeCurrentRound() {
 
       const A = document.createElement("a");
       A.setAttribute("href", `${SET}`);
+      A.setAttribute("target", "_blank");
       A.classList.add("textLink");
       textnode = document.createTextNode(`${SET_TITLE}`);
       A.appendChild(textnode);
