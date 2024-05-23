@@ -411,4 +411,156 @@ function createBoard(title, admin, date, text) {
   BOARD.appendChild(DATE_ADMIN);
   aBoard.appendChild(BOARD);
 }
-makeLeaderboard();
+
+function tese() {
+  console.log("test");
+  firebase
+    .database()
+    .ref("/")
+    .child("Rounds")
+    .child("R1")
+    .child("Groups")
+    .child("G2")
+    .update({
+      Group: "G2",
+      Settings: {
+        date: "June 3",
+        time: "07:00 EST"
+      },
+      players: ["_Mystic_:)", "Rombus_158"]
+    });
+}
+//tese();
+
+let currentRound;
+
+function makeRoundBoards() {
+  firebase
+    .database()
+    .ref("/Settings")
+    .on("value", function (snapshot) {
+      console.log(snapshot.val().currentRound);
+      localStorage.setItem("currentRound", `${snapshot.val().currentRound}`);
+    });
+
+  document.getElementById("boardSection").innerHTML = "";
+
+  makeCurrentRound();
+  makeGroups();
+}
+
+function makeCurrentRound() {
+  let textnode;
+  const currentRoundBoard = document.getElementById("currentRoundBoard");
+  let DATE, MODE, SET, SET_MAKER, SET_TITLE, TIME;
+
+  currentRound = localStorage.getItem("currentRound");
+  firebase
+    .database()
+    .ref("/Rounds")
+    .child(`${currentRound}`)
+    .child("Settings")
+    .on("value", function (snapshot) {
+      DATE = snapshot.val().date;
+      MODE = snapshot.val().mode;
+      SET = snapshot.val().set;
+      SET_MAKER = snapshot.val().setMaker;
+      SET_TITLE = snapshot.val().setTitle;
+      TIME = snapshot.val().time;
+
+      const DIV1 = document.createElement("div");
+      DIV1.classList.add("section");
+      DIV1.classList.add("main");
+      const H3 = document.createElement("h3");
+      textnode = document.createTextNode(`Current Round: ${currentRound}`);
+      H3.appendChild(textnode);
+      DIV1.appendChild(H3);
+      currentRoundBoard.appendChild(DIV1);
+
+      const DIV2 = document.createElement("div");
+      DIV2.classList.add("section");
+      DIV2.classList.add("main");
+
+      makePara(`Mode: ${MODE}`);
+      makeBreak();
+      makePara(`Time: ${TIME}`);
+      makeBreak();
+      makePara(`Date: ${DATE}`);
+      makeBreak();
+      makePara(`Set: ${SET_TITLE}`);
+
+      currentRoundBoard.appendChild(DIV2);
+
+      function makePara(text) {
+        const P = document.createElement("p");
+        textnode = document.createTextNode(text);
+        P.appendChild(textnode);
+        DIV2.appendChild(P);
+      }
+      function makeBreak() {
+        const BR = document.createElement("br");
+        DIV2.appendChild(BR);
+      }
+    });
+}
+
+function makeGroups() {
+  let textnode;
+  const boardSection = document.getElementById("boardSection");
+
+  currentRound = localStorage.getItem("currentRound");
+
+  firebase
+    .database()
+    .ref("/Rounds")
+    .child(`${currentRound}`)
+    .child("Groups")
+    .on("value", function (snapshot) {
+      const MAIN_DIV = document.createElement("div");
+      MAIN_DIV.classList.add("section");
+      MAIN_DIV.classList.add("main");
+      snapshot.forEach(function (childSnapshot) {
+        console.log(childSnapshot.val());
+        const BR = document.createElement("br");
+
+        const DIV = document.createElement("div");
+        DIV.classList.add("section");
+        DIV.classList.add("main");
+
+        const H3 = document.createElement("h3");
+        textnode = document.createTextNode(`${childSnapshot.val().Group}`);
+        H3.appendChild(textnode);
+        DIV.appendChild(H3);
+
+        makeBR();
+
+        let H4 = document.createElement("h4");
+        textnode = document.createTextNode(
+          `${childSnapshot.val().Settings.date} - ${
+            childSnapshot.val().Settings.time
+          }`
+        );
+        H4.appendChild(textnode);
+        DIV.appendChild(H4);
+
+        makeBR();
+
+        childSnapshot.val().players.forEach(function (player) {
+          console.log(player);
+
+          const SPAN = document.createElement("span");
+          textnode = document.createTextNode(`${player}, `);
+          SPAN.appendChild(textnode);
+          DIV.appendChild(SPAN);
+        });
+
+        MAIN_DIV.appendChild(DIV);
+
+        function makeBR() {
+          const BR = document.createElement("br");
+          DIV.appendChild(BR);
+        }
+      });
+      boardSection.appendChild(MAIN_DIV);
+    });
+}

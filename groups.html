@@ -3,7 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Zone - Announcements</title>
+  <title>Game Zone - Groups</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
@@ -16,20 +16,24 @@
   <div class="background"></div>
   <div class="mainContent">
 
-    <div class="section intro navBar">
+    <div id="navBar" class="section intro navBar">
       <h1>Game Zone</h1>
       <a href="index">Home</a>
-      <a class="disabled">Annoucements</a>
+      <a href="announcements">Annoucements</a>
       <a href="leaderboard">Leaderboard</a>
       <a href="rounds">Rounds</a>
-      <a href="groups">Groups</a>
+      <a class="disabled">Groups</a>
       <a href="signup">SignUp</a>
       <a href="rules">Rules</a>
     </div>
     <div class="section intro">
-      <h2>Annoucements</h2>
+      <h2>Groups</h2>
     </div>
-    <div id="announcementsBoard"></div>
+    <div id="currentRoundBoard" class="section main">
+
+    </div>
+    <div id="boardSection">
+    </div>
     <br>
     <div class="section footer">
       <p>Hosted By: <a href="https://discord.gg/wU92uGTk?event=1237112913685381172">Legend Plays</a>
@@ -39,7 +43,7 @@
 
   <script src="Scripts/firebase.js" type="text/javascript"></script>
   <script>
-    updateAnnouncements();
+    makeRoundBoards();
   </script>
 </body>
 
